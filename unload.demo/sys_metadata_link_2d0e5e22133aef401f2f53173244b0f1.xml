@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>55f268f113f66f401f2f53173244b0b2</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_json_resume_arrays">
+    <x_snc_json_resume_arrays action="INSERT_OR_UPDATE">
+        <array_parent/>
+        <name>skills</name>
+        <object_parent/>
+        <order/>
+        <sys_created_by>admin-eduque</sys_created_by>
+        <sys_created_on>2019-01-05 00:30:59</sys_created_on>
+        <sys_id>55f268f113f66f401f2f53173244b0b2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin-eduque</sys_updated_by>
+        <sys_updated_on>2019-01-05 00:30:59</sys_updated_on>
+    </x_snc_json_resume_arrays>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>admin-eduque</sys_created_by>
+        <sys_created_on>2019-01-07 17:24:03</sys_created_on>
+        <sys_id>2d0e5e22133aef401f2f53173244b0f1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>skills</sys_name>
+        <sys_package display_value="JSON Builder" source="x_snc_json_resume">3001407913766f401f2f53173244b02d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="JSON Builder">3001407913766f401f2f53173244b02d</sys_scope>
+        <sys_update_name>sys_metadata_link_2d0e5e22133aef401f2f53173244b0f1</sys_update_name>
+        <sys_updated_by>admin-eduque</sys_updated_by>
+        <sys_updated_on>2019-01-07 17:24:03</sys_updated_on>
+        <tablename>x_snc_json_resume_arrays</tablename>
+    </sys_metadata_link>
+</record_update>

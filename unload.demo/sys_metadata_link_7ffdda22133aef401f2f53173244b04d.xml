@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>55336cf113f66f401f2f53173244b06b</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_json_resume_objects">
+    <x_snc_json_resume_objects action="INSERT_OR_UPDATE">
+        <array_parent display_value="skills">55f268f113f66f401f2f53173244b0b2</array_parent>
+        <name>skills object web dev</name>
+        <object_parent/>
+        <order/>
+        <sys_created_by>admin-eduque</sys_created_by>
+        <sys_created_on>2019-01-05 00:32:07</sys_created_on>
+        <sys_id>55336cf113f66f401f2f53173244b06b</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin-eduque</sys_updated_by>
+        <sys_updated_on>2019-01-05 00:37:48</sys_updated_on>
+    </x_snc_json_resume_objects>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>admin-eduque</sys_created_by>
+        <sys_created_on>2019-01-07 17:23:55</sys_created_on>
+        <sys_id>7ffdda22133aef401f2f53173244b04d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>skills object web dev</sys_name>
+        <sys_package display_value="JSON Builder" source="x_snc_json_resume">3001407913766f401f2f53173244b02d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="JSON Builder">3001407913766f401f2f53173244b02d</sys_scope>
+        <sys_update_name>sys_metadata_link_7ffdda22133aef401f2f53173244b04d</sys_update_name>
+        <sys_updated_by>admin-eduque</sys_updated_by>
+        <sys_updated_on>2019-01-07 17:23:55</sys_updated_on>
+        <tablename>x_snc_json_resume_objects</tablename>
+    </sys_metadata_link>
+</record_update>

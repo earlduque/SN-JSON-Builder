@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <http_method>GET</http_method>
+        <name>get</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+	
+	var data = {};
+	
+	data.display = {};
+	data.alert = '';
+	var category = {};
+	catCheckItems();
+	catCheckObjects();
+	catCheckArrays();
+	//data.display[categories.category] = category;
+
+	function catCheckItems(sys_id){
+		var items = new GlideRecord('x_snc_json_resume_item');
+		if (sys_id) {
+			items.addQuery('object_parent', sys_id);
+			items.addOrCondition('array_parent', sys_id);
+		} else {
+			items.addNullQuery('object_parent');
+			items.addNullQuery('array_parent');
+		}
+		items.query();
+		while(items.next()){
+			data.display[items.item] = items.getValue('item_value')+'';
+		}
+	}
+
+	function catCheckArrays(sys_id){
+		var arrays = new GlideRecord('x_snc_json_resume_arrays');
+		arrays.orderBy('order');
+		if (sys_id) {
+			arrays.addQuery('object_parent', sys_id);
+			arrays.addOrCondition('array_parent', sys_id);
+		} else {
+			arrays.addNullQuery('object_parent');
+			arrays.addNullQuery('array_parent');
+		}
+		arrays.query();
+		while(arrays.next()){
+			data.display[arrays.name] = buildArray(arrays.getUniqueValue()+'');
+		}
+	}
+
+	function catCheckObjects(sys_id){
+		var objects = new GlideRecord('x_snc_json_resume_objects');
+		if (sys_id) {
+			objects.addQuery('object_parent', sys_id);
+			objects.addOrCondition('array_parent', sys_id);
+		} else {
+			objects.addNullQuery('object_parent');
+			objects.addNullQuery('array_parent');
+		}
+		objects.query();
+		while(objects.next()){
+			data.display[objects.name] = buildObject(objects.getUniqueValue()+'');
+		}
+	}
+
+	function buildObject(sys_id){
+		var this_object = {};
+		var items = new GlideRecord('x_snc_json_resume_item');
+		items.addQuery('object_parent', sys_id);
+		items.query();
+		while(items.next()){
+			this_object[items.item] = items.getValue('item_value')+'';
+		}
+		var objects = new GlideRecord('x_snc_json_resume_objects');
+		objects.addQuery('object_parent', sys_id);
+		objects.query();
+		while(objects.next()){
+			this_object[objects.name] = buildObject(objects.getUniqueValue()+'');
+		}
+		var arrays = new GlideRecord('x_snc_json_resume_arrays');
+		arrays.addQuery('object_parent', sys_id);
+		arrays.query();
+		while(arrays.next()){
+			this_object[arrays.name] = buildArray(arrays.getUniqueValue()+'');
+		}
+		return this_object;
+	}
+
+	function buildArray(sys_id){
+		var this_array = [];
+		var items = new GlideRecord('x_snc_json_resume_item');
+		items.addQuery('array_parent', sys_id);
+		items.orderBy('order');
+		items.query();
+		while(items.next()){
+			this_array.push(items.item_value+'');
+		}
+		var objects = new GlideRecord('x_snc_json_resume_objects');
+		objects.addQuery('array_parent', sys_id);
+		objects.orderBy('order');
+		objects.query();
+		while(objects.next()){
+			this_array.push(buildObject(objects.getUniqueValue()+''));
+		}
+		var arrays = new GlideRecord('x_snc_json_resume_arrays');
+		arrays.addQuery('array_parrent', sys_id);
+		arrays.orderBy('order');
+		arrays.query();
+		while(arrays.next()){
+			this_array.push(buildArray(arrays.getUniqueValue()+''));
+		}
+		return this_array;
+	}
+	
+	data.display_final = JSON.stringify(data.display);
+    response.setStatus(200);
+	response.setContentType('application/json');
+	response.getStreamWriter().writeString(data.display_final);
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_snc_json_resume/json_resume</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>false</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin-eduque</sys_created_by>
+        <sys_created_on>2019-01-05 01:02:46</sys_created_on>
+        <sys_id>620960f913f66f401f2f53173244b09a</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>get</sys_name>
+        <sys_package display_value="JSON Builder" source="x_snc_json_resume">3001407913766f401f2f53173244b02d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="JSON Builder">3001407913766f401f2f53173244b02d</sys_scope>
+        <sys_update_name>sys_ws_operation_620960f913f66f401f2f53173244b09a</sys_update_name>
+        <sys_updated_by>admin-eduque</sys_updated_by>
+        <sys_updated_on>2019-01-07 18:09:58</sys_updated_on>
+        <web_service_definition display_value="JSON Resume">63c8643913f66f401f2f53173244b00c</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

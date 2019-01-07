@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+	
+	if (c.data.alert != '') alert(c.data.alert);
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.wrapword{
+  white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+  white-space: -webkit-pre-wrap; /*Chrome &amp; Safari */ 
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  white-space: pre-wrap;       /* css-3 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  word-break: break-all;
+  white-space: normal;
+  font-family: monospace;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>json_resume</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>JSON Resume</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+	data.display = {};
+	data.alert = '';
+	var category = {};
+	catCheckItems();
+	catCheckObjects();
+	catCheckArrays();
+	//data.display[categories.category] = category;
+
+	function catCheckItems(sys_id){
+		var items = new GlideRecord('x_snc_json_resume_item');
+		if (sys_id) {
+			items.addQuery('object_parent', sys_id);
+			items.addOrCondition('array_parent', sys_id);
+		} else {
+			items.addNullQuery('object_parent');
+			items.addNullQuery('array_parent');
+		}
+		items.query();
+		while(items.next()){
+			data.display[items.item] = items.getValue('item_value')+'';
+		}
+	}
+
+	function catCheckArrays(sys_id){
+		var arrays = new GlideRecord('x_snc_json_resume_arrays');
+		arrays.orderBy('order');
+		if (sys_id) {
+			arrays.addQuery('object_parent', sys_id);
+			arrays.addOrCondition('array_parent', sys_id);
+		} else {
+			arrays.addNullQuery('object_parent');
+			arrays.addNullQuery('array_parent');
+		}
+		arrays.query();
+		while(arrays.next()){
+			data.display[arrays.name] = buildArray(arrays.getUniqueValue()+'');
+		}
+	}
+
+	function catCheckObjects(sys_id){
+		var objects = new GlideRecord('x_snc_json_resume_objects');
+		if (sys_id) {
+			objects.addQuery('object_parent', sys_id);
+			objects.addOrCondition('array_parent', sys_id);
+		} else {
+			objects.addNullQuery('object_parent');
+			objects.addNullQuery('array_parent');
+		}
+		objects.query();
+		while(objects.next()){
+			data.display[objects.name] = buildObject(objects.getUniqueValue()+'');
+		}
+	}
+
+	function buildObject(sys_id){
+		var this_object = {};
+		var items = new GlideRecord('x_snc_json_resume_item');
+		items.addQuery('object_parent', sys_id);
+		items.query();
+		while(items.next()){
+			this_object[items.item] = items.getValue('item_value')+'';
+		}
+		var objects = new GlideRecord('x_snc_json_resume_objects');
+		objects.addQuery('object_parent', sys_id);
+		objects.query();
+		while(objects.next()){
+			this_object[objects.name] = buildObject(objects.getUniqueValue()+'');
+		}
+		var arrays = new GlideRecord('x_snc_json_resume_arrays');
+		arrays.addQuery('object_parent', sys_id);
+		arrays.query();
+		while(arrays.next()){
+			this_object[arrays.name] = buildArray(arrays.getUniqueValue()+'');
+		}
+		return this_object;
+	}
+
+	function buildArray(sys_id){
+		var this_array = [];
+		var items = new GlideRecord('x_snc_json_resume_item');
+		items.addQuery('array_parent', sys_id);
+		items.orderBy('order');
+		items.query();
+		while(items.next()){
+			this_array.push(items.item_value+'');
+		}
+		var objects = new GlideRecord('x_snc_json_resume_objects');
+		objects.addQuery('array_parent', sys_id);
+		objects.orderBy('order');
+		objects.query();
+		while(objects.next()){
+			this_array.push(buildObject(objects.getUniqueValue()+''));
+		}
+		var arrays = new GlideRecord('x_snc_json_resume_arrays');
+		arrays.addQuery('array_parrent', sys_id);
+		arrays.orderBy('order');
+		arrays.query();
+		while(arrays.next()){
+			this_array.push(buildArray(arrays.getUniqueValue()+''));
+		}
+		return this_array;
+	}
+
+	data.display_final = JSON.stringify(data.display, undefined, 4);
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin-eduque</sys_created_by>
+        <sys_created_on>2019-01-04 22:42:00</sys_created_on>
+        <sys_id>f50a087113b66f401f2f53173244b099</sys_id>
+        <sys_mod_count>85</sys_mod_count>
+        <sys_name>JSON Resume</sys_name>
+        <sys_package display_value="JSON Builder" source="x_snc_json_resume">3001407913766f401f2f53173244b02d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="JSON Builder">3001407913766f401f2f53173244b02d</sys_scope>
+        <sys_update_name>sp_widget_f50a087113b66f401f2f53173244b099</sys_update_name>
+        <sys_updated_by>admin-eduque</sys_updated_by>
+        <sys_updated_on>2019-01-07 18:06:26</sys_updated_on>
+        <template><![CDATA[<div class="wrapword">
+  {{::data.display}}
+</div>
+<pre>
+{{::data.display_final}}
+</pre>]]></template>
+    </sp_widget>
+</record_update>

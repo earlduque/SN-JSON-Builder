@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Arrays" max_length="40" name="x_snc_json_resume_arrays" type="collection">
+        <element label="Array Parent" max_length="32" name="array_parent" reference="x_snc_json_resume_arrays" type="reference"/>
+        <element display="true" label="Name" max_length="40" name="name" type="string"/>
+        <element label="Object Parent" max_length="32" name="object_parent" reference="x_snc_json_resume_objects" type="reference"/>
+        <element label="Order" max_length="40" name="order" type="integer"/>
+        <index name="index">
+            <element name="array_parent"/>
+        </index>
+        <index name="index2">
+            <element name="object_parent"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>f5b6dcb913b66f401f2f53173244b09e</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_json_resume_item">
+    <x_snc_json_resume_item action="INSERT_OR_UPDATE">
+        <array_parent/>
+        <item>company</item>
+        <item_value>Company</item_value>
+        <object_parent display_value="work object">f6a61cb913b66f401f2f53173244b0e0</object_parent>
+        <order/>
+        <sys_created_by>admin-eduque</sys_created_by>
+        <sys_created_on>2019-01-04 23:37:46</sys_created_on>
+        <sys_id>f5b6dcb913b66f401f2f53173244b09e</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin-eduque</sys_updated_by>
+        <sys_updated_on>2019-01-04 23:37:49</sys_updated_on>
+    </x_snc_json_resume_item>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>admin-eduque</sys_created_by>
+        <sys_created_on>2019-01-07 17:23:48</sys_created_on>
+        <sys_id>b9fd1e22133aef401f2f53173244b0f2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>company</sys_name>
+        <sys_package display_value="JSON Builder" source="x_snc_json_resume">3001407913766f401f2f53173244b02d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="JSON Builder">3001407913766f401f2f53173244b02d</sys_scope>
+        <sys_update_name>sys_metadata_link_b9fd1e22133aef401f2f53173244b0f2</sys_update_name>
+        <sys_updated_by>admin-eduque</sys_updated_by>
+        <sys_updated_on>2019-01-07 17:23:48</sys_updated_on>
+        <tablename>x_snc_json_resume_item</tablename>
+    </sys_metadata_link>
+</record_update>

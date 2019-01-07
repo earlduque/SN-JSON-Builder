@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="order" label="Order" language="en" table="x_snc_json_resume_arrays">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>order</element>
+            <help/>
+            <hint/>
+            <label>Order</label>
+            <language>en</language>
+            <name>x_snc_json_resume_arrays</name>
+            <plural>Orders</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin-eduque</sys_created_by>
+            <sys_created_on>2019-01-04 22:18:32</sys_created_on>
+            <sys_id>8ea4443d13766f401f2f53173244b084</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Order</sys_name>
+            <sys_package display_value="JSON Builder" source="x_snc_json_resume">3001407913766f401f2f53173244b02d</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="JSON Builder">3001407913766f401f2f53173244b02d</sys_scope>
+            <sys_update_name>sys_documentation_x_snc_json_resume_arrays_order_en</sys_update_name>
+            <sys_updated_by>admin-eduque</sys_updated_by>
+            <sys_updated_on>2019-01-04 22:18:32</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
